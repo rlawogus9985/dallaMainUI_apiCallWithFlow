@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="topBnrDataBinding"
+            type="com.example.dallamain.data.TopBnrData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/topbnrImage"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:scaleType="centerCrop"
+            bindImageToViewWithUrl = "@{topBnrDataBinding.image_profile}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageView
+            android:id="@+id/gradientTopbnr"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/gradient_topbnr"
+            app:layout_constraintBottom_toBottomOf="@id/topbnrImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/topbnrTextLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="topbnrTextLayoutTag"
+            app:layout_constraintBottom_toBottomOf="@id/gradientTopbnr"
+            app:layout_constraintStart_toStartOf="@id/gradientTopbnr">
+
+            <TextView
+                android:id="@+id/topbnrDjName"
+                style="@style/suitRegularStyle"
+                android:letterSpacing="-0.03"
+                android:textColor="#202020"
+                android:textSize="14dp"
+                android:text="@{topBnrDataBinding.mem_nickname}"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="13dp"
+                app:layout_constraintBottom_toBottomOf="@id/topbnrTextLayout"
+                app:layout_constraintStart_toStartOf="@id/topbnrTextLayout" />
+
+            <TextView
+                android:id="@+id/topbnrTitle"
+                style="@style/suitSemiBoldStyle"
+                android:letterSpacing="-0.03"
+                android:textSize="24dp"
+                android:textColor="#202020"
+                android:lineSpacingExtra="6dp"
+                android:text="@{topBnrDataBinding.title}"
+                android:layout_marginBottom="6dp"
+                app:layout_constraintStart_toStartOf="@id/topbnrDjName"
+                app:layout_constraintBottom_toTopOf="@id/topbnrDjName" />
+
+            <ImageView
+                android:id="@+id/topbnrBdg"
+                android:layout_width="45dp"
+                android:layout_height="18dp"
+                android:layout_marginBottom="8dp"
+                topBnrBadge = "@{topBnrDataBinding.isBdg}"
+                app:layout_constraintBottom_toTopOf="@id/topbnrTitle"
+                app:layout_constraintStart_toStartOf="@id/topbnrTitle" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
